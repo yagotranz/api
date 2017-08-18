@@ -1,0 +1,7 @@
+sudo -u postgres psql -c 'CREATE DATABASE tranz;'
+
+sudo -u postgres psql -c "CREATE USER tranz_user WITH PASSWORD 'tranz';"
+
+sudo -u postgres psql -c "GRANT postgres TO tranz_user;"
+
+sudo -u postgres psql -d tranz -a -f tranz.sql

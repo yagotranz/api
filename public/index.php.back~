@@ -1,0 +1,54 @@
+<?php
+
+error_reporting( E_ALL );
+ini_set('display_errors', 1);
+
+//include 'bootstrap.php';
+
+
+
+require 'vendor/autoload.php';
+$app = new Silex\Application();
+
+
+
+
+
+
+$app-> run();
+
+
+
+$app->before(function($request, $app) {
+
+            TodoAuth::authenticate($request, $app);
+});
+
+
+$app ->get('/message', function(Request $request) {
+
+$message = Message::where('user_id', $request->attributes->get('userid'))->get();
+$payload = [];
+
+foreach ($message as $msg){
+
+       $payload[$msg->id] =
+       [
+               'body' => $msg->body,
+               'user_id' => $msg->user_id,
+               'created_at' => $msg->created_at
+       ];
+}
+
+ return json_encode($payload, JSON_UNESCAPED_SLASHES);
+
+});
+
+
+
+
+
+
+
+?>
+
