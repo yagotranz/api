@@ -21,4 +21,4 @@ apt-get purge phppgadmin --assume-yes
 
 apt autoremove --assume-yes
 
-rm ~/Escritorio/api
+rm ~/Escritorio/apiTranz

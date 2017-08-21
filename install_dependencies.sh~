@@ -32,7 +32,7 @@ apt-get install php7.0-mbstring --assume-yes
 
 dpkg -l php7.0-mbstring > ~/Escritorio/api
 
-awk -v u=$user1 'NR==29{print "Alias /tranz \"/home/"u"/repoTranz/api/public\"\n<Directory \"/home/"u"/repoTranz/api/public\">\nOptions Indexes FollowSymLinks MultiViews\nAllowOverride All\nRequire local\n<IfModule mod_rewrite.c>\nOptions -MultiViews\nRewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^(.*)$ index.php [QSA,L]\n</IfModule>\n</Directory>"}7' /etc/apache2/sites-enabled/000-default.conf >> default.conf
+awk -v u=$user1 'NR==29{print "Alias /api \"/home/"u"/repoTranz/api/public\"\n<Directory \"/home/"u"/repoTranz/api/public\">\nOptions Indexes FollowSymLinks MultiViews\nAllowOverride All\nRequire local\n<IfModule mod_rewrite.c>\nOptions -MultiViews\nRewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteRule ^(.*)$ index.php [QSA,L]\n</IfModule>\n</Directory>"}7' /etc/apache2/sites-enabled/000-default.conf >> default.conf
 
 cp /etc/apache2/sites-enabled/000-default.conf /etc/apache2/sites-enabled/000-default.conf.back
 

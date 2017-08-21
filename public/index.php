@@ -40,16 +40,21 @@ $app->get('/message', function(Request $request) {
 
 $message = Message::where('user_id', $request->attributes->get('userid'))->get();
 
-$payload = [];
+$payload = array();
 foreach ($message as $msg){
-$payload[$msg->id] =
-        [
+$payload[] =
+       [
                 'body' => $msg->body,
                 'user_id' => $msg->user_id,
-                'created_at' => $msg->created_at
+                'created_at' => $msg->created_at,
+						'done' => $msg->done
         ];
  }
-  return json_encode($payload, JSON_UNESCAPED_SLASHES);
+
+	$payload1 = [
+				'messages' => $payload	
+	];
+  return json_encode($payload1, JSON_UNESCAPED_SLASHES);
 });
 
 $app->get('/message/{message_id}', function($message_id) use ($app) {
@@ -59,11 +64,12 @@ $app->get('/message/{message_id}', function($message_id) use ($app) {
 
     $payload = [];
 foreach ($message as $msg){
-        $payload[$msg->id] =
+        $payload =
         [
                 'body' => $msg->body,
                 'user_id' => $msg->user_id,
-                'created_at' => $msg->created_at
+                'created_at' => $msg->created_at,
+                'done' => $msg->done
         ];
  }
   return json_encode($payload, JSON_UNESCAPED_SLASHES);

@@ -11,10 +11,13 @@ $auth = $request->headers->get("AuthorizationKey");
 $apikey = substr($auth, strpos($auth, ' '));
 
 $apikey = trim($apikey);
-echo $apikey;
+
+$apikey = 'd0763edaa9d9bd2a9516280e9044d885';
+
 $user = new User();
 $check = $user->authenticate($apikey);
 
+//añadir negacion ! de check en producción
 if(!$check){
 $app->abort(401);
 }
