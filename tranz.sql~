@@ -11,8 +11,8 @@ CREATE TABLE bank_records
    reference_1				CHAR(512),
    reference_2			CHAR(512),
    reference_3			CHAR(512),
-   transaction_date			DATE,
-   value_date			DATE
+   transaction_date			CHAR(512),
+   value_date			CHAR(512)
    
    
    

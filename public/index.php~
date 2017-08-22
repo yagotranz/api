@@ -46,7 +46,8 @@ $payload[] =
        [
                 'body' => $msg->body,
                 'user_id' => $msg->user_id,
-                'created_at' => $msg->created_at
+                'created_at' => $msg->created_at,
+						'done' => $msg->done
         ];
  }
 
@@ -67,7 +68,7 @@ foreach ($message as $msg){
         [
                 'body' => $msg->body,
                 'user_id' => $msg->user_id,
-                'created_at' => $msg->created_at
+                'created_at' => $msg->created_at,
                 'done' => $msg->done
         ];
  }

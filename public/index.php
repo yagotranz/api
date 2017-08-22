@@ -57,6 +57,30 @@ $payload[] =
   return json_encode($payload1, JSON_UNESCAPED_SLASHES);
 });
 
+
+$app->get('/message', function(Request $request) {
+      
+
+
+$message = Message::where('user_id', $request->attributes->get('userid'))->get();
+
+$payload = array();
+foreach ($message as $msg){
+$payload[] =
+       [
+                'body' => $msg->body,
+                'user_id' => $msg->user_id,
+                'created_at' => $msg->created_at,
+						'done' => $msg->done
+        ];
+ }
+
+	$payload1 = [
+				'messages' => $payload	
+	];
+  return json_encode($payload1, JSON_UNESCAPED_SLASHES);
+});
+
 $app->get('/message/{message_id}', function($message_id) use ($app) {
    // $_message = $request->get('message');
     $message = Message::where('id', $message_id)->get();
